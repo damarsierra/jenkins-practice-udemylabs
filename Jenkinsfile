@@ -2,11 +2,11 @@
 pipeline {
     agent none
     stages {
-		agent { docker { image 'golang:1.22.4-alpine3.20' } }
-		options {
-			timeout(time: 10, unit: 'MINUTES')
-		}
         stage('build') {
+			agent { docker { image 'golang:1.22.4-alpine3.20' } }
+			options {
+				timeout(time: 10, unit: 'MINUTES')
+			}
             steps {
                 sh 'go version'
             }
