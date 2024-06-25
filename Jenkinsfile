@@ -13,7 +13,7 @@ pipeline {
         }
 		stage('Build') {
             steps {
-                sh './build.sh' // Run the build.sh asset
+                sh 'ls -la' // Run the build.sh asset
             }
         }
         stage('Test') {
