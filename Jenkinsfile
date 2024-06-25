@@ -13,12 +13,12 @@ pipeline {
         }
 		stage('Build') {
             steps {
-                sh 'scripts/build.sh' // Run the build.sh asset
+                sh './scripts/build.sh' // Run the build.sh asset
             }
         }
         stage('Test') {
             steps {
-                sh 'scripts/test.sh' // Run the test.sh asset
+                sh './scripts/test.sh' // Run the test.sh asset
             }
         }
     }
