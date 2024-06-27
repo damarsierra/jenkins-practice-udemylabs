@@ -1,24 +1,24 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-	agent {
-		docker {
-			image 'golang:1.22.4-alpine3.20'
-		}
-	}
+	agent any
+    tools { go 'go-1.19' }
+    environment {
+        ENV = "${env.BRANCH_NAME == 'master' ? 'PROD' : 'DEV'}"
+    }
     stages {
 		stage('Version Check') {
             steps {
                 sh 'go version' // Check if Golang was installed
             }
         }
-		stage('Build') {
+		stage('Dir Check') {
             steps {
                 sh 'ls -la' // Run the build.sh asset
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
-                sh './test.sh' // Run the test.sh asset
+                sh 'bash scripts/build.sh' // Run the test.sh asset
             }
         }
     }
