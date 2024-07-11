@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'bash scripts/build.sh' // Run the test.sh asset
+                sh 'go build -o $GOTMPDIR/$ENV main.go' // Run the test.sh asset
             }
         }
     }
